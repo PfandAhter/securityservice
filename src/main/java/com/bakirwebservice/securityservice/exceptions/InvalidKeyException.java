@@ -2,20 +2,18 @@ package com.bakirwebservice.securityservice.exceptions;
 
 import lombok.Getter;
 
-public class NotFoundException extends RuntimeException{
+public class InvalidKeyException extends RuntimeException{
 
     @Getter
     private String message;
 
-    public NotFoundException(){
+    public InvalidKeyException(){
         super();
         this.message = null;
     }
 
-    public NotFoundException(String message) {
+    public InvalidKeyException(String message){
         super(message);
         this.message = message;
     }
-
-
 }

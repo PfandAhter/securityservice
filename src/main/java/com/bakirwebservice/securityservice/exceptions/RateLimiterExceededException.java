@@ -1,21 +1,20 @@
 package com.bakirwebservice.securityservice.exceptions;
 
 import lombok.Getter;
+import org.apache.catalina.util.RateLimiter;
 
-public class NotFoundException extends RuntimeException{
+public class RateLimiterExceededException extends RuntimeException{
 
     @Getter
     private String message;
 
-    public NotFoundException(){
+    public RateLimiterExceededException(){
         super();
         this.message = null;
     }
 
-    public NotFoundException(String message) {
+    public RateLimiterExceededException(String message){
         super(message);
         this.message = message;
     }
-
-
 }

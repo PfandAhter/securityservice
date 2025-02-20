@@ -1,6 +1,15 @@
 server:
   port: 8099
 
+security:
+  apikey:
+    secret: your-secret-key-here
+    expiration-days: 7
+    max-requests-per-minute: 60
+    allowed-ip-ranges: 192.168.1.0/24,10.0.0.0/8
+    max-active-keys-per-user: 5
+    rotation-days: 90
+
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/security_service
@@ -15,3 +24,12 @@ spring:
     name: securityservice
   main:
     banner-mode: off
+
+client:
+  feign:
+    token-service:
+      path: http://localhost:8079/token
+      extractUsername: /extract/username
+    user-service:
+      path: http://localhost:8082/user
+      extractRole: /extract/role

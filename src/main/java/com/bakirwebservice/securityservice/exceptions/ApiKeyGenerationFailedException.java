@@ -2,20 +2,18 @@ package com.bakirwebservice.securityservice.exceptions;
 
 import lombok.Getter;
 
-public class NotFoundException extends RuntimeException{
+public class ApiKeyGenerationFailedException extends RuntimeException {
 
     @Getter
     private String message;
 
-    public NotFoundException(){
+    public ApiKeyGenerationFailedException(){
         super();
         this.message = null;
     }
 
-    public NotFoundException(String message) {
+    public ApiKeyGenerationFailedException(String message) {
         super(message);
         this.message = message;
     }
-
-
 }
