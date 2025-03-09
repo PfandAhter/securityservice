@@ -27,4 +27,9 @@ public class BaseResponse {
 
     @JsonProperty("Description")
     private String description = ResponseStatus.SUCCESS;
+
+
+    public BaseResponse(String description){
+        this.description = description;
+    }
 }
