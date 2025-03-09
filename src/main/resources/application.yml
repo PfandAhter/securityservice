@@ -3,7 +3,7 @@ server:
 
 security:
   apikey:
-    secret: your-secret-key-here
+    secretKey: "secretKEY"
     expiration-days: 7
     max-requests-per-minute: 60
     allowed-ip-ranges: 192.168.1.0/24,10.0.0.0/8
@@ -21,9 +21,13 @@ spring:
       ddl-auto: update
     show-sql: true
   application:
-    name: securityservice
+    name: security-service
   main:
     banner-mode: off
+
+secret:
+  jwtSecret: #YOUR-JTW-SECRET#
+  jwtCryptoSecret : #YOUR-CRYPTO-SECRET#
 
 client:
   feign:

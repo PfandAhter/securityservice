@@ -1,6 +1,8 @@
 package com.bakirwebservice.securityservice.rest.controller;
 
+import com.bakirwebservice.securityservice.api.request.BaseRequest;
 import com.bakirwebservice.securityservice.api.request.GenerateApiKeyRequest;
+import com.bakirwebservice.securityservice.api.response.BaseResponse;
 import com.bakirwebservice.securityservice.api.response.CheckCanAccess;
 import com.bakirwebservice.securityservice.api.response.GenerateApiKeyResponse;
 import com.bakirwebservice.securityservice.exceptions.AccessDeniedException;
@@ -30,8 +32,6 @@ public class SecurityController implements SecurityControllerApi {
 
     private final ISecurityServiceValidator securityServiceValidator;
 
-    private final IApiKeySecurityService apiKeySecurityService;
-
     @Override
     public ResponseEntity<CheckCanAccess> hasAccessToPath(String url, String role,HttpServletRequest request) throws AccessDeniedException, NotFoundException {
         securityServiceValidator.validateHasAccessToPath(url,role);
@@ -40,16 +40,7 @@ public class SecurityController implements SecurityControllerApi {
     }
 
     @Override
-    public ResponseEntity<GenerateApiKeyResponse> generateApikey(GenerateApiKeyRequest generateApiKeyRequest) {
-        securityServiceValidator.validateApiKeyGeneratorHasAccessToGenerate(generateApiKeyRequest);
-        log.info("SecurityService generateApiKey method is called");
-        return ResponseEntity.ok(apiKeySecurityService.generateApiKey(generateApiKeyRequest));
-    }
-
-    @Override
-    public ResponseEntity<Boolean> checkApiKey(String apiKey) {
-//        securityServiceValidator.validateIsUserHasAccessThisApiKey();
-        log.info("SecurityService checkApiKey method is called");
-        return ResponseEntity.ok(apiKeySecurityService.validateApiKey(apiKey));
+    public ResponseEntity<BaseResponse> logout(BaseRequest baseRequest, HttpServletRequest request) {
+        return ResponseEntity.ok(securityService.logout(baseRequest,request));
     }
 }

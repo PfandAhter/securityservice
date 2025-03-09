@@ -1,6 +1,8 @@
 package com.bakirwebservice.securityservice.rest.controller.api;
 
+import com.bakirwebservice.securityservice.api.request.BaseRequest;
 import com.bakirwebservice.securityservice.api.request.GenerateApiKeyRequest;
+import com.bakirwebservice.securityservice.api.response.BaseResponse;
 import com.bakirwebservice.securityservice.api.response.CheckCanAccess;
 import com.bakirwebservice.securityservice.api.response.GenerateApiKeyResponse;
 import com.bakirwebservice.securityservice.exceptions.AccessDeniedException;
@@ -17,9 +19,6 @@ public interface SecurityControllerApi {
     @GetMapping("/hasAccessToPath")
     ResponseEntity<CheckCanAccess> hasAccessToPath(@RequestParam("url") String url,@RequestParam("role") String role, HttpServletRequest request) throws AccessDeniedException, NotFoundException;
 
-    @PostMapping("/generateApiKey")
-    ResponseEntity<GenerateApiKeyResponse> generateApikey(@RequestBody GenerateApiKeyRequest generateApiKeyRequest);
-
-    @GetMapping("/checkApiKey")
-    ResponseEntity<Boolean> checkApiKey(@RequestParam("apiKey") String apiKey);
+    @PostMapping("/logout")
+    ResponseEntity<BaseResponse> logout(@RequestBody BaseRequest baseRequest, HttpServletRequest request);
 }

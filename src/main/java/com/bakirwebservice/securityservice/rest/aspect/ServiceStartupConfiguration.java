@@ -21,5 +21,4 @@ public class ServiceStartupConfiguration {
     public void getErrorCodes() {
         cacheService.getErrorCodes();
     }
-
 }

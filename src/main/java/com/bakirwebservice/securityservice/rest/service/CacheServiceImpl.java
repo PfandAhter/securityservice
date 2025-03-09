@@ -25,9 +25,8 @@ public class CacheServiceImpl implements ICacheService {
     public void getErrorCodes() {
         try {
             List<ErrorCodes> errorCodes = errorCodeRepository.findAll();
-            if (errorCodes != null) { //TODO: Check here for always null
-                errorCodes.forEach(errorCode -> errorCodeList.put(errorCode.getId(),errorCode));
-            }
+            errorCodes.forEach(errorCode -> errorCodeList.put(errorCode.getId(), errorCode));
+
         } catch (Exception e) {
             log.error("Error in getting error codes from database");
         }

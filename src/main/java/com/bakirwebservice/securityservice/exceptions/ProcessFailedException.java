@@ -2,17 +2,18 @@ package com.bakirwebservice.securityservice.exceptions;
 
 import lombok.Getter;
 
-public class RateLimiterExceededException extends RuntimeException{
+public class ProcessFailedException extends RuntimeException{
 
     @Getter
     private String message;
 
-    public RateLimiterExceededException(){
+
+    public ProcessFailedException(){
         super();
         this.message = null;
     }
 
-    public RateLimiterExceededException(String message){
+    public ProcessFailedException(String message){
         super(message);
         this.message = message;
     }

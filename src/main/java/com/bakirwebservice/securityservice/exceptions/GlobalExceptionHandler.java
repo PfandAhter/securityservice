@@ -27,7 +27,6 @@ public class GlobalExceptionHandler {
 
     private final ICacheService cacheService;
 
-
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.NOT_ACCEPTABLE)
     @ResponseBody
@@ -49,8 +48,6 @@ public class GlobalExceptionHandler {
     public ResponseEntity<BaseResponse> handleException (NotFoundException e) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(createFailResponse(e.getMessage()));
     }
-
-
 
     private BaseResponse createFailResponse(String exceptionMessage){
         ErrorCodesDTO errorCodesDTO = findErrorCode(exceptionMessage);
